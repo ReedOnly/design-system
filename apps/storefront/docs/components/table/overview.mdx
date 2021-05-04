@@ -1,5 +1,5 @@
 ---
-title: Table
+title: Table and data grid table
 metaTitle: Table overview
 tabs:
   - Overview
@@ -15,7 +15,7 @@ route: /components/table/
 
 import { Table } from '@equinor/eds-core-react'
 
-_Tables_ display data in a structured format.
+_Tables_ and _data grid tables_ display data in a structured format and display information in an easy to scan format. They can be in cards or free floating within a page.
 
 <!--One to two sentences as an introduction to the component-->
 
@@ -23,23 +23,23 @@ _Tables_ display data in a structured format.
 
 <!--List how to use it, sizes, widths, grid interactions, color allowances -->
 
-Tables display information in an easy to scan format. Tables can be in cards or free floating within a page.
+Table can be used to display a small set of data with minor interaction. 
+Data grid table can be used to display a large set of data with advanced interaction. 
 
 **Don't**
 
 <!--Bullet point list if needed -->
 
-- Do not use a table without a header row.
-- Do not add zebra striping.
-- Do not use a table with less than two columns.
-- Do not spell out numbers in tables.
+- Do not use table or data grid table without a header row.
+- Do not use table or data grid table with less than two columns.
+- Do not spell out numbers in table or data grid tables.
 - Do not mix text/label alignments within the same column.
 - Do not use center alignment.
 - Do not create a null state that can be confused as content.
 
 ## Compact
 
-Compact tables could be implemented as a **supplement** to the default/comfortable table. If implemented, the selection of display density should be accessed through the accessibility menu in the [top bar](https://eds.equinor.com/components/navigation-top-bar/). The change of density is global, and will therefore affect all tables in the product. 
+Compact tables and data grid table could be implemented as a **supplement** to the default/comfortable table. If implemented, the selection of display density should be accessed through the accessibility menu in the [top bar](https://eds.equinor.com/components/navigation-top-bar/). The change of density is global, and will therefore affect all tables in the product. 
 
 ## Variant
 
