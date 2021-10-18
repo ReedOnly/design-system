@@ -1,4 +1,4 @@
-import { forwardRef, MouseEvent, HTMLAttributes } from 'react'
+import { forwardRef, MouseEvent, HTMLAttributes, useEffect } from 'react'
 import styled from 'styled-components'
 import { scrim as tokens } from './Scrim.tokens'
 import { useGlobalKeyPress } from '../../hooks'
@@ -41,8 +41,17 @@ export const Scrim = forwardRef<HTMLDivElement, ScrimProps>(function Scrim(
     ref,
   }
 
+  const setOverflow = (overflowState: string) => {
+    document.body.style.overflow = overflowState
+  }
+
+  useEffect(() => {
+    setOverflow('hidden')
+  }, [])
+
   useGlobalKeyPress('Escape', (e: KeyboardEvent) => {
     if (isDismissable && onClose) {
+      setOverflow('visible')
       onClose(e, false)
     }
   })
@@ -58,6 +67,7 @@ export const Scrim = forwardRef<HTMLDivElement, ScrimProps>(function Scrim(
   const handleContentClick = (event: MouseEvent) => {
     // Avoid event bubbling inside dialog/content inside scrim
     event.stopPropagation()
+    setOverflow('visible')
   }
 
   return (
