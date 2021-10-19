@@ -77,4 +77,30 @@ describe('Scrim', () => {
     expect(scrim).toHaveStyleRule('width', width)
     expect(scrim).toHaveStyleRule('height', height)
   })
+
+  it('Is scroll disabled when scrim is open', () => {
+    render(<DismissableScrim data-testid="scrim" />)
+    const scrim = screen.getByTestId('scrim')
+    const overflow = document.body.style.overflow
+    expect(overflow).toEqual('hidden')
+  })
+  it('Is scroll enabled with Esc', () => {
+    render(<DismissableScrim data-testid="scrim" />)
+    const scrim = screen.getByTestId('scrim')
+    expect(screen.queryByText('OK')).toBeVisible()
+    fireEvent.keyDown(scrim, {
+      key: 'Escape',
+      keyCode: 27,
+    })
+    const overflow = document.body.style.overflow
+    expect(overflow).toEqual('visible')
+  })
+  it('Is scroll enabled with button click', () => {
+    render(<DismissableScrim data-testid="scrim" />)
+    const scrim = screen.getByTestId('scrim')
+    const targetButton = screen.queryByText('OK')
+    fireEvent.click(targetButton)
+    const overflow = document.body.style.overflow
+    expect(overflow).toEqual('visible')
+  })
 })
